@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ObjectId } from "bson";
 import prisma from "@/lib/db/prisma";
+import { Toaster } from "sonner";
 
 import PriceTag from "@/components/PriceTag";
 import AddToCartButton from "@/components/AddToCartButton";
@@ -58,13 +59,17 @@ export default async function Product({ params: { id } }: ProductPageProps) {
           width={512}
           height={512}
           alt={product.name}
-          className="aspect-video w-full justify-self-center rounded-xl object-cover object-center shadow-2xl"
+          className="aspect-video h-auto w-full justify-self-center rounded-xl 
+            object-cover object-center shadow-2xl lg:aspect-square  xl:aspect-[5/4]"
         />
-        <div className="flex flex-col items-start gap-8">
+        <div className="flex h-full flex-col items-start gap-8">
           <h1 className="text-2xl font-bold">{product.name}</h1>
           <PriceTag price={product.price} />
-          <p>{product.description}</p>
-          <AddToCartButton productId={product.id} />
+          <p className="mt-auto">{product.description}</p>
+          <AddToCartButton
+            productId={product.id}
+            className="mt-auto max-w-full self-center lg:self-auto"
+          />
         </div>
       </div>
     </section>

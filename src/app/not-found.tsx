@@ -10,7 +10,7 @@ export default function NotFound() {
         height={400}
         src={"/images/404.png"}
         alt="404"
-        className="w-full max-w-xl object-cover"
+        className="w-full max-w-md object-cover"
       />
 
       <div className="flex flex-col items-center justify-center px-4">

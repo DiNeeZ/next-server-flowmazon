@@ -8,6 +8,11 @@ const config: Config = {
   ],
 
   plugins: [require("daisyui")],
+  theme: {
+    container: {
+      padding: "1rem",
+    },
+  },
   daisyui: {
     themes: [
       {

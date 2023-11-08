@@ -11,6 +11,9 @@ const nextConfig = {
       {
         hostname: "store.storeimages.cdn-apple.com",
       },
+      {
+        hostname: "img.freepik.com",
+      },
     ],
   },
 };

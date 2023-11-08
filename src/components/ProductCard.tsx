@@ -7,10 +7,10 @@ interface ProductCardProps {
   product: Product;
 }
 
+const ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+
 export default function ProductCard({ product }: ProductCardProps) {
-  const isNew =
-    Date.now() - new Date(product.createdAt).getTime() <
-    1000 * 60 * 60 * 24 * 7;
+  const isNew = Date.now() - new Date(product.createdAt).getTime() < ONE_WEEK;
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -32,7 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p>{formatPrice(product.price)}</p>
         <div className="flex justify-end">
           <Link
-            href={`/product/${product.id}`}
+            href={`/products/${product.id}`}
             className="btn btn-primary btn-sm text-xs"
           >
             Buy Now
