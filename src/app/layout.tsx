@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
+import SessionProvider from "@/providers/SessionProvider";
 
 import Header from "@/components/Navbar/Header";
-import "./globals.css";
 import Footer from "@/components/Footer";
-import { Toaster } from "sonner";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,12 +34,14 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex min-h-screen flex-col justify-between`}
       >
-        <Header />
-        <main className="flex min-w-[300px] grow flex-col gap-12">
-          {children}
-        </main>
-        <Footer />
-        <Toaster position="bottom-center" richColors />
+        <SessionProvider>
+          <Header />
+          <main className="flex min-w-[300px] grow flex-col gap-12">
+            {children}
+          </main>
+          <Footer />
+          <Toaster position="bottom-center" richColors />
+        </SessionProvider>
       </body>
     </html>
   );

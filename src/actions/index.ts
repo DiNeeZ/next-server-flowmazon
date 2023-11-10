@@ -92,3 +92,11 @@ export async function setProductQuantity(productId: string, quantity: number) {
 
   revalidatePath("/cart");
 }
+
+export async function removeCartItem(id: string) {
+  await prisma.cartItem.delete({
+    where: { id },
+  });
+
+  revalidatePath("/cart");
+}
